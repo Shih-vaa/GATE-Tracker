@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GATE CS 2027 syllabus tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FCFCFA; --paper2:#F2F3EF; --ink:#1F2328; --muted:#62666D; --rule:#E4D3D8;
+  --omr:#B3264F; --omrsoft:#F7E1E7; --graphite:#2B2E33; --graphiteText:#FCFCFA;
+  --new:#1D6B73; --newsoft:#DDEFF0; --focus:#1D6B73;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#15171B; --paper2:#1D2026; --ink:#E9EAEC; --muted:#9AA0A8; --rule:#3A2A31;
+    --omr:#F07A98; --omrsoft:#3A1F28; --graphite:#E4E4E4; --graphiteText:#15171B;
+    --new:#72C4B8; --newsoft:#173236; --focus:#72C4B8;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15171B; --paper2:#1D2026; --ink:#E9EAEC; --muted:#9AA0A8; --rule:#3A2A31;
+  --omr:#F07A98; --omrsoft:#3A1F28; --graphite:#E4E4E4; --graphiteText:#15171B;
+  --new:#72C4B8; --newsoft:#173236; --focus:#72C4B8;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Archivo","Arial Narrow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.5;font-variation-settings:"wdth" 100}
+.wrap{max-width:860px;margin:0 auto;padding:28px 18px 80px}
+h1{font-size:clamp(2rem,6vw,3.1rem);line-height:1.02;margin:0 0 10px;font-weight:800;
+  font-stretch:70%;font-variation-settings:"wdth" 68;letter-spacing:-.01em}
+.lede{color:var(--muted);max-width:62ch;margin:0 0 22px}
+.legend{display:flex;flex-wrap:wrap;gap:14px 22px;margin:0 0 22px;padding:14px 16px;
+  border:1.5px solid var(--omr);border-radius:6px;background:var(--omrsoft)}
+.legend span{display:inline-flex;align-items:center;gap:8px;font-size:.95rem}
+.bub{--s:26px;width:var(--s);height:var(--s);border-radius:50%;border:1.6px solid var(--omr);
+  color:var(--omr);display:inline-grid;place-items:center;font-size:.72rem;font-weight:700;
+  font-variation-settings:"wdth" 80;background:transparent;flex:none}
+.bub.on{background:var(--graphite);border-color:var(--graphite);color:transparent;
+  box-shadow:inset 0 0 0 2px var(--graphite)}
+.totals{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 20px}
+.tot{padding:12px 14px;background:var(--paper2);border-radius:6px}
+.tot b{display:block;font-size:1.5rem;font-weight:800;font-variation-settings:"wdth" 75;
+  font-variant-numeric:tabular-nums}
+.tot small{color:var(--muted)}
+.bar{height:5px;background:var(--rule);border-radius:3px;margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--omr);transition:width .3s}
+.tools{position:sticky;top:0;z-index:5;background:var(--paper);padding:10px 0;
+  border-bottom:1.5px solid var(--rule);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tools input{flex:1 1 200px;min-width:0;font:inherit;padding:8px 12px;border-radius:6px;
+  border:1.5px solid var(--rule);background:var(--paper);color:var(--ink)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button,.btn{font:inherit;font-size:.88rem;padding:7px 11px;border-radius:999px;
+  border:1.5px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.jump{display:flex;gap:6px;overflow-x:auto;padding:12px 0 4px;scrollbar-width:thin}
+.jump a{flex:none;font-size:.85rem;color:var(--ink);text-decoration:none;padding:5px 10px;
+  border-radius:999px;background:var(--paper2);white-space:nowrap}
+.jump a em{font-style:normal;color:var(--omr);margin-left:6px;font-variant-numeric:tabular-nums}
+section.sec{margin-top:34px;scroll-margin-top:70px}
+.sechead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  border-bottom:2px solid var(--omr);padding-bottom:6px}
+.sechead h2{margin:0;font-size:1.55rem;font-weight:800;font-variation-settings:"wdth" 72;line-height:1.1}
+.sechead .meta{color:var(--muted);font-size:.9rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.official{margin:8px 0 0;font-size:.9rem;color:var(--muted)}
+.official summary{cursor:pointer;color:var(--omr);width:fit-content}
+.official p{margin:6px 0 0;padding:10px 12px;background:var(--paper2);border-radius:6px;color:var(--ink)}
+.cols{display:flex;justify-content:flex-end;gap:8px;padding:10px 4px 2px;color:var(--omr);
+  font-size:.75rem;font-weight:700}
+.cols span{width:32px;text-align:center}
+.grp{margin-top:6px}
+.grp h3{font-size:1.02rem;margin:14px 0 4px;font-weight:700;display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+.grp h3 .n{font-weight:500;color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
+.tag{font-size:.72rem;font-weight:600;color:var(--new);background:var(--newsoft);
+  padding:2px 8px;border-radius:999px}
+.ptag{font-size:.68rem;font-weight:700;padding:1px 7px;border-radius:999px;margin-left:8px;
+  white-space:nowrap;border:1.2px solid currentColor}
+.ptag.cut{color:var(--omr)}
+.ptag.skim{color:var(--muted)}
+.row.low .t{opacity:.72}
+.row{display:flex;align-items:center;gap:10px;padding:6px 4px;border-bottom:1px dashed var(--rule)}
+.row .t{flex:1;min-width:0}
+.row .b{display:flex;gap:8px}
+.row button.bub{--s:32px;cursor:pointer;font-family:inherit;padding:0}
+.row button.bub:hover:not(.on){background:var(--omrsoft)}
+button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:2.5px solid var(--focus);outline-offset:2px}
+.row.done .t{color:var(--muted)}
+.dropped{margin-top:14px;padding:10px 12px;border-left:3px solid var(--muted);background:var(--paper2);
+  font-size:.9rem;color:var(--muted);border-radius:0 6px 6px 0}
+.dropped b{color:var(--ink)}
+.foot{margin-top:44px;color:var(--muted);font-size:.88rem;display:flex;flex-wrap:wrap;gap:12px;
+  align-items:center;justify-content:space-between}
+.status{font-size:.85rem;color:var(--muted)}
+.empty{padding:30px 0;color:var(--muted);text-align:center}
+[hidden]{display:none!important}
+@media (max-width:520px){
+  .totals{grid-template-columns:1fr}
+  .row button.bub{--s:34px}
+  .cols span{width:34px}
+}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>GATE CS 2027 syllabus tracker</h1>
+  <p class="lede">Every topic in the official IIT Madras syllabus for GATE 2027 (CS), split into the subtopics you'd actually study. Fill a bubble once you've covered a subtopic, revised it, or practised its previous-year questions.</p>
+
+  <div class="legend" aria-label="What the bubbles mean">
+    <span><i class="bub" aria-hidden="true">S</i> Studied</span>
+    <span><i class="bub" aria-hidden="true">R</i> Revised</span>
+    <span><i class="bub" aria-hidden="true">P</i> PYQs practised</span>
+    <span><i class="ptag cut" aria-hidden="true">study last</i> Safe to leave till the end</span>
+    <span><i class="ptag skim" aria-hidden="true">skim</i> Read the concept, skip heavy practice</span>
+  </div>
+
+  <div class="totals">
+    <div class="tot"><b id="tS">0%</b><small id="cS">0 of 0 studied</small><div class="bar"><i id="bS"></i></div></div>
+    <div class="tot"><b id="tR">0%</b><small id="cR">0 of 0 revised</small><div class="bar"><i id="bR"></i></div></div>
+    <div class="tot"><b id="tP">0%</b><small id="cP">0 of 0 with PYQs done</small><div class="bar"><i id="bP"></i></div></div>
+  </div>
+
+  <div class="tools">
+    <input id="q" type="search" placeholder="Search topics, e.g. banker's, CIDR, LALR" aria-label="Search topics">
+    <div class="seg" role="group" aria-label="Show">
+      <button data-f="all" aria-pressed="true">Everything</button>
+      <button data-f="todo" aria-pressed="false">Not studied</button>
+      <button data-f="rev" aria-pressed="false">Needs revision</button>
+      <button data-f="pyq" aria-pressed="false">PYQs pending</button>
+    </div>
+    <button class="btn" id="core" aria-pressed="false">Core only</button>
+  </div>
+  <nav class="jump" id="jump" aria-label="Jump to section"></nav>
+
+  <main id="main"></main>
+  <p class="empty" id="empty" hidden>No topics match. Clear the search or pick another filter.</p>
+
+  <div class="foot" id="auth">
+    <span class="in">
+      <input id="email" type="email" placeholder="you@example.com" aria-label="Email for sign-in link"
+             style="font:inherit;padding:7px 11px;border-radius:6px;border:1.5px solid var(--rule);background:var(--paper);color:var(--ink)">
+      <button class="btn" id="send">Email me a link</button>
+    </span>
+    <span class="out" hidden>Signed in as <b class="who"></b> <button class="btn" id="signout">Sign out</button></span>
+  </div>
+
+  <div class="foot">
+    <span class="status" id="status">Progress is saved on this device.</span>
+    <button class="btn" id="reset">Reset all progress</button>
+  </div>
+  <p class="official" style="margin-top:14px">Section headings follow the official GATE 2027 CS syllabus wording; the subtopics under them are a study breakdown of what those headings typically cover in GATE questions. Teal tags mark topics whose wording is new in 2027. "Study last" and "skim" tags mark low-yield topics for a 55+ target on a short timeline; "Core only" hides them. They are a priority judgement, not part of the official syllabus.</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const SYL = [
+ {id:"ga",name:"General Aptitude",meta:"15 marks, common to all papers",
+  groups:[
+   {t:"Verbal aptitude",items:["Grammar: tenses, articles, adjectives, prepositions, conjunctions","Subject–verb agreement and other parts of speech","Vocabulary: words, idioms and phrases in context","Reading comprehension","Narrative sequencing (arranging sentences)"]},
+   {t:"Quantitative aptitude",items:["Data interpretation: bar graphs, pie charts, other data graphs","2D and 3D plots, maps and tables","Ratios and percentages","Powers, exponents and logarithms","Permutations and combinations","Series (number and letter)","Mensuration and geometry","Elementary statistics and probability"]},
+   {t:"Analytical aptitude",items:["Logic: deduction and induction","Analogy","Numerical relations and reasoning"]},
+   {t:"Spatial aptitude",items:["Transformation of shapes: translation, rotation, scaling","Mirroring, assembling and grouping","Paper folding and cutting","Patterns in 2 and 3 dimensions"]}
+  ]},
+ {id:"math",name:"Engineering Mathematics",meta:"about 13 marks",
+  official:"Discrete Mathematics: Propositional and first order logic. Sets, relations, functions, partial orders and lattices. Monoids, Groups. Graphs: connectivity, matching, colouring. Combinatorics: counting, recurrence relations, generating functions. Linear Algebra: Matrices, determinants, system of linear equations, eigenvalues and eigenvectors, LU decomposition. Calculus: Limits, continuity and differentiability, Maxima and minima, Mean value theorem, Integration. Probability and Statistics: Random variables, Uniform, normal, exponential, Poisson and binomial distributions. Mean, median, mode and standard deviation. Conditional probability and Bayes theorem.",
+  groups:[
+   {t:"Propositional and first order logic",items:["Connectives, truth tables, tautology and contradiction","Logical equivalences, CNF and DNF","Rules of inference and validity of arguments","Predicates and quantifiers, nested quantifiers and negation","Translating English statements to first-order logic"]},
+   {t:"Sets, relations and functions",items:["Set operations, power sets, cardinality","Properties of relations: reflexive, symmetric, antisymmetric, transitive","Equivalence relations and partitions","Counting relations of a given type; closures","Functions: injective, surjective, bijective; composition and inverse","Counting functions between finite sets"]},
+   {t:"Partial orders and lattices",items:["Posets and Hasse diagrams","Maximal/minimal elements, upper and lower bounds, LUB and GLB","Lattices: bounded, distributive, complemented","Boolean algebra as a lattice"]},
+   {t:"Monoids and groups",items:["Algebraic structures: closure, associativity, identity, inverse","Semigroups and monoids","Groups and abelian groups","Cyclic groups, generators, order of an element","Subgroups and Lagrange's theorem"]},
+   {t:"Graphs: connectivity, matching, colouring",items:["Degree, handshaking lemma, degree sequences","Paths, cycles, connected components","Cut vertices, bridges, vertex and edge connectivity","Special graphs: complete, bipartite, regular, trees","Euler and Hamiltonian graphs","Planar graphs and Euler's formula","Graph isomorphism","Matching: maximum and perfect matching, Hall's theorem","Colouring and chromatic number","Independent sets and vertex cover"]},
+   {t:"Combinatorics",items:["Sum and product rules, permutations and combinations","Combinations with repetition (stars and bars)","Pigeonhole principle","Inclusion–exclusion and derangements","Catalan numbers","Recurrence relations: forming and solving linear recurrences","Generating functions"]},
+   {t:"Linear algebra",items:["Matrix types and operations","Rank and linear independence","Determinants and their properties","Systems of linear equations: consistency and number of solutions","Gaussian elimination","Eigenvalues and eigenvectors and their properties","Cayley–Hamilton theorem","LU decomposition"]},
+   {t:"Calculus",items:["Limits and L'Hôpital's rule","Continuity and differentiability","Maxima and minima","Mean value theorems (Rolle's and Lagrange's)","Integration: definite integrals, substitution, by parts, properties"]},
+   {t:"Probability and statistics",items:["Probability axioms and counting-based probability","Conditional probability and independence","Total probability and Bayes' theorem","Random variables: PMF, PDF, CDF","Expectation and variance, linearity of expectation","Uniform distribution","Normal distribution","Exponential distribution (memorylessness)","Poisson distribution","Binomial distribution","Mean, median, mode and standard deviation"]}
+  ]},
+ {id:"dl",name:"Digital Logic",
+  official:"Boolean algebra and minimization – algebraic technique, Karnaugh map, tabular method. Design of combinational and sequential circuits. Number representation and arithmetic (fixed and floating point).",
+  groups:[
+   {t:"Boolean algebra",items:["Laws, duality and De Morgan's theorems","Canonical SOP and POS, minterms and maxterms","Universal gates and functional completeness","Counting Boolean functions; self-dual functions"]},
+   {t:"Minimization",tag:"Methods listed explicitly in 2027",items:["Algebraic technique","Karnaugh maps (up to 4–5 variables)","Don't-care conditions","Prime and essential prime implicants","Tabular method (Quine–McCluskey)"]},
+   {t:"Design of combinational circuits",items:["Half and full adders, subtractors","Ripple carry and carry lookahead adders","Multiplexers and implementing functions with MUX","Decoders and encoders","Comparators"]},
+   {t:"Design of sequential circuits",items:["Latches and flip-flops: SR, JK, D, T","Characteristic and excitation tables, flip-flop conversion","Registers and shift registers","Asynchronous (ripple) counters","Synchronous counters, mod-N, ring and Johnson counters","State diagrams and sequential circuit design"]},
+   {t:"Number representation and arithmetic",items:["Number systems and base conversion","Sign-magnitude, 1's and 2's complement","Overflow detection","Fixed-point arithmetic","IEEE 754 floating point: formats, bias, normalized and denormalized, special values","Floating-point arithmetic and range/precision"]}
+  ]},
+ {id:"coa",name:"Computer Organization and Architecture",
+  official:"Instruction set and addressing modes. Design of arithmetic and logic unit (ALU). Design of control unit – hardwired and microprogrammed. Memory interfacing and hierarchy: performance, cache memory mapping. I/O interface (interrupt and DMA). Instruction pipelining, pipeline hazards.",
+  dropped:"Secondary storage (magnetic disk) is no longer listed under COA.",
+  groups:[
+   {t:"Instruction set and addressing modes",items:["Instruction formats and field-size calculations","Types of instructions","Addressing modes: immediate, direct, indirect, register, indexed, relative, base","Effective address calculation","RISC vs CISC"]},
+   {t:"Design of ALU",tag:"Wording new in 2027",items:["ALU organisation and datapath","Arithmetic circuits used in the ALU","Multiplication and division algorithms (e.g. Booth's)"]},
+   {t:"Design of control unit",tag:"Wording new in 2027",items:["Hardwired control unit","Microprogrammed control unit","Horizontal vs vertical microinstructions","Control memory size calculations"]},
+   {t:"Memory interfacing and hierarchy",tag:"Wording new in 2027",items:["Memory hierarchy performance: hit ratio, average access time","Multi-level cache performance","Memory interfacing: chip organisation and address decoding","Direct-mapped cache","Set-associative cache","Fully associative cache","Tag, index and offset bit calculations","Replacement policies (LRU, FIFO)","Write-through vs write-back"]},
+   {t:"I/O interface",items:["Programmed I/O","Interrupt-driven I/O and interrupt handling","DMA: burst and cycle-stealing modes","DMA and interrupt overhead calculations"]},
+   {t:"Instruction pipelining and hazards",items:["Pipeline stages, speedup, throughput and CPI","Structural hazards","Data hazards: RAW, WAR, WAW; stalls and operand forwarding","Control hazards and branch penalty"]}
+  ]},
+ {id:"pds",name:"Programming and Data Structures",
+  official:"Programming in C. Recursion. Arrays, stacks, queues, linked lists, trees, binary search trees, binary heaps, graphs.",
+  groups:[
+   {t:"Programming in C",items:["Data types, operators and precedence","Control flow and loops","Functions and parameter passing","Scope and storage classes (auto, static, extern, register)","Pointers and pointer arithmetic","Arrays, strings and pointer–array relationship","Structures and unions","Dynamic memory: malloc, calloc, free","Output-tracing questions"]},
+   {t:"Recursion",items:["Tracing recursive functions","Recursion trees and counting calls"]},
+   {t:"Arrays",items:["1D and 2D arrays","Row-major and column-major address calculation"]},
+   {t:"Stacks",items:["Stack operations and implementation","Infix, prefix and postfix conversion","Expression evaluation using stacks"]},
+   {t:"Queues",items:["Linear and circular queues","Deques and priority queues","Queue using stacks and stack using queues"]},
+   {t:"Linked lists",items:["Singly linked lists: insertion, deletion, reversal","Doubly and circular linked lists"]},
+   {t:"Trees",items:["Binary tree properties: nodes, leaves, height","Traversals: preorder, inorder, postorder, level order","Constructing a tree from traversals","Expression trees"]},
+   {t:"Binary search trees",items:["Search, insertion and deletion","Number of distinct BSTs","AVL trees and rotations"]},
+   {t:"Binary heaps",items:["Min-heaps and max-heaps, array representation","Insert, delete and heapify","Build-heap in O(n)"]},
+   {t:"Graphs",items:["Adjacency matrix and adjacency list representations"]}
+  ]},
+ {id:"algo",name:"Algorithms",
+  official:"Searching, sorting, hashing. Asymptotic worst case time and space complexity. Algorithm design techniques: greedy, dynamic programming and divide‐and‐conquer. Graph traversals, minimum spanning trees, shortest paths.",
+  groups:[
+   {t:"Searching",items:["Linear search","Binary search"]},
+   {t:"Sorting",items:["Bubble, selection and insertion sort","Merge sort","Quick sort and pivot analysis","Heap sort","Counting and radix sort","Stability, in-place property, number of comparisons and swaps","Lower bound for comparison sorting"]},
+   {t:"Hashing",items:["Hash functions","Chaining","Open addressing: linear probing, quadratic probing, double hashing","Load factor and expected number of probes"]},
+   {t:"Asymptotic complexity",items:["O, Ω, Θ, o, ω notations","Comparing growth rates of functions","Time complexity of loops and code fragments","Recurrences: master theorem","Recurrences: recursion tree and substitution","Space complexity"]},
+   {t:"Greedy",items:["Activity selection","Fractional knapsack","Huffman coding","Job sequencing with deadlines"]},
+   {t:"Dynamic programming",items:["0/1 knapsack","Longest common subsequence","Matrix chain multiplication","Subset sum","Other classic DP (e.g. LIS, edit distance)"]},
+   {t:"Divide and conquer",items:["Merge sort and quick sort as divide and conquer","Binary search and max–min","Strassen's matrix multiplication"]},
+   {t:"Graph traversals",items:["Breadth-first search","Depth-first search, discovery/finish times, edge classification","Topological sort","Connected and strongly connected components"]},
+   {t:"Minimum spanning trees",items:["Prim's algorithm","Kruskal's algorithm","MST properties: cut property, uniqueness"]},
+   {t:"Shortest paths",items:["BFS for unweighted graphs","Dijkstra's algorithm","Bellman–Ford algorithm","Floyd–Warshall algorithm"]}
+  ]},
+ {id:"toc",name:"Theory of Computation",
+  official:"Regular expressions and finite automata. Context-free grammars and push-down automata. Regular and context-free languages, pumping lemma. Turing machines and undecidability.",
+  groups:[
+   {t:"Regular expressions and finite automata",items:["DFA design and minimum number of states","NFA and ε-NFA","NFA to DFA (subset construction)","DFA minimization","Regular expressions and conversion to/from automata"]},
+   {t:"Context-free grammars and push-down automata",items:["Designing CFGs","Derivations, parse trees and ambiguity","Simplification and normal forms (CNF)","PDA: acceptance by final state and empty stack","DPDA vs NPDA, deterministic CFLs"]},
+   {t:"Regular and context-free languages",items:["Identifying regular vs non-regular languages","Closure and decision properties of regular languages","Identifying CFL vs non-CFL","Closure and decision properties of CFLs"]},
+   {t:"Pumping lemma",items:["Pumping lemma for regular languages","Pumping lemma for CFLs"]},
+   {t:"Turing machines and undecidability",items:["Turing machines and their variants","Recursive and recursively enumerable languages","Closure properties of REC and RE","Halting problem and reductions","Rice's theorem","Decidability of problems across language classes"]}
+  ]},
+ {id:"cd",name:"Compiler Design",
+  official:"Lexical analysis, parsing, syntax-directed translation. Runtime environments. Intermediate code generation. Local optimisation, Data flow analyses: constant propagation, liveness analysis, common sub expression elimination.",
+  groups:[
+   {t:"Lexical analysis",items:["Phases of a compiler","Tokens, lexemes and patterns; counting tokens"]},
+   {t:"Parsing",items:["FIRST and FOLLOW sets","Left recursion and left factoring","LL(1) parsing tables and conflicts","Shift-reduce parsing and handles","LR(0) and SLR(1)","LALR(1) and CLR(1)","Comparing parser power; ambiguous grammars"]},
+   {t:"Syntax-directed translation",items:["Synthesized and inherited attributes","S-attributed and L-attributed definitions","Evaluating SDT schemes and tracing output"]},
+   {t:"Runtime environments",items:["Activation records and the runtime stack","Static vs dynamic scoping","Parameter passing mechanisms","Static, stack and heap allocation"]},
+   {t:"Intermediate code generation",items:["Three-address code: quadruples and triples","Syntax trees and DAGs","Basic blocks and control flow graphs"]},
+   {t:"Local optimisation",items:["DAG-based optimisation of basic blocks","Constant folding, strength reduction, dead code elimination","Copy propagation"]},
+   {t:"Data flow analyses",items:["Constant propagation","Liveness analysis","Common subexpression elimination (available expressions)"]}
+  ]},
+ {id:"os",name:"Operating System",
+  official:"System calls, processes, threads, inter‐process communication, concurrency and synchronization. Deadlock. CPU and I/O scheduling. Memory management and virtual memory. File systems.",
+  groups:[
+   {t:"System calls, processes and threads",items:["System calls, user mode and kernel mode","fork() and counting processes","Process states and PCB","Context switching","User-level vs kernel-level threads; what threads share"]},
+   {t:"Inter-process communication, concurrency and synchronization",items:["IPC: shared memory and message passing","Critical section problem and its requirements","Peterson's solution and software approaches","Hardware support: test-and-set, compare-and-swap","Semaphores (binary and counting) and mutexes","Monitors","Producer–consumer, readers–writers, dining philosophers"]},
+   {t:"Deadlock",items:["Necessary conditions and resource allocation graphs","Deadlock prevention","Deadlock avoidance: Banker's algorithm","Detection and recovery","Minimum resources needed to avoid deadlock"]},
+   {t:"CPU and I/O scheduling",items:["FCFS, SJF and SRTF","Round robin and priority scheduling","Multilevel queue scheduling","Waiting, turnaround and response time","Disk scheduling: FCFS, SSTF, SCAN, C-SCAN, LOOK"]},
+   {t:"Memory management and virtual memory",items:["Contiguous allocation: first, best and worst fit; fragmentation","Paging and page table size","Multi-level page tables","TLB and effective access time","Segmentation","Demand paging and page fault service time","Page replacement: FIFO, LRU, optimal; Belady's anomaly","Thrashing and working set"]},
+   {t:"File systems",items:["Allocation methods: contiguous, linked, indexed","Inodes, direct and indirect blocks, maximum file size","Directory structures","Free-space management"]}
+  ]},
+ {id:"dbms",name:"Databases",
+  official:"ER‐model. Relational model: relational algebra, tuple calculus, SQL. Integrity constraints, normal forms. File organization, indexing (e.g., B and B+ trees). Transactions and concurrency control.",
+  groups:[
+   {t:"ER model",items:["Entities, attributes and relationships","Cardinality and participation constraints","Weak entities","ER to relational mapping and minimum number of tables"]},
+   {t:"Relational model",items:["Relational algebra: selection, projection, joins, division","Tuple relational calculus","SQL: queries, joins, aggregates, GROUP BY and HAVING","SQL: nested and correlated subqueries, NULL handling"]},
+   {t:"Integrity constraints",items:["Super, candidate and primary keys","Foreign keys, referential integrity and ON DELETE actions"]},
+   {t:"Normal forms",items:["Functional dependencies and Armstrong's axioms","Attribute closure and finding candidate keys","Minimal (canonical) cover","1NF, 2NF, 3NF and BCNF","Lossless-join and dependency-preserving decomposition"]},
+   {t:"File organization and indexing",items:["Records, blocks and blocking factor","Primary, clustering and secondary indexes","Dense vs sparse and multilevel indexes","B trees","B+ trees: order, insertion, node counts"]},
+   {t:"Transactions and concurrency control",items:["ACID properties","Conflict serializability and precedence graphs","View serializability","Recoverable, cascadeless and strict schedules","Two-phase locking: basic, strict, rigorous","Timestamp ordering and Thomas write rule","Wait-die and wound-wait"]}
+  ]},
+ {id:"cn",name:"Computer Networks",
+  official:"Principles of Layering; Basics of switching (circuit, packet and virtual circuit) and performance metrics; Data link layer: error detection, Medium Access Control, Ethernet; Distance vector and link state routing; IPv4 - Fragmentation, CIDR Notation, Network Address Translation; TCP- flow control and congestion control, socket API; DNS and HTTP.",
+  dropped:"No longer listed: UDP, ARP, DHCP, ICMP, SMTP, FTP, Email, flooding and shortest-path routing as standalone topics, framing, Ethernet bridging.",
+  groups:[
+   {t:"Principles of layering",items:["Why layering; services and encapsulation","OSI and TCP/IP models"]},
+   {t:"Basics of switching and performance metrics",tag:"Performance metrics new in 2027",items:["Circuit switching","Packet switching","Virtual circuit switching","Transmission, propagation, queuing and processing delay","Throughput, RTT and bandwidth-delay product"]},
+   {t:"Data link layer",items:["Error detection: parity and checksum","CRC","MAC: pure and slotted ALOHA","MAC: CSMA/CD and its efficiency","Ethernet: frame format and minimum frame size"]},
+   {t:"Distance vector and link state routing",items:["Distance vector routing and routing table updates","Count-to-infinity and split horizon","Link state routing and Dijkstra-based route computation"]},
+   {t:"IPv4",items:["IPv4 header fields","Fragmentation: offsets, MF flag, number of fragments","CIDR notation, subnetting and supernetting","Route aggregation and longest prefix match","Network Address Translation (NAT)"]},
+   {t:"TCP",items:["TCP header, sequence and acknowledgement numbers","Connection setup (3-way handshake) and teardown","Flow control: sliding window","Stop-and-wait, Go-Back-N and Selective Repeat; window size and sequence bits","Congestion control: slow start and congestion avoidance (AIMD)","Timeouts, fast retransmit and fast recovery","Socket API: socket, bind, listen, accept, connect, send/recv, close"]},
+   {t:"DNS and HTTP",items:["DNS hierarchy, iterative and recursive resolution, caching","HTTP requests, methods and status codes","Persistent vs non-persistent HTTP and RTT calculations"]}
+  ]}
+];
+
+// Low-priority topics for a 55+ target with limited time
+const CUT=["Tabular method (Quine–McCluskey)","Generating functions","Semigroups and monoids",
+"Groups and abelian groups","Cyclic groups, generators, order of an element","Cayley–Hamilton theorem",
+"LU decomposition","Strassen's matrix multiplication","Counting and radix sort",
+"Multiplication and division algorithms (e.g. Booth's)","Tuple relational calculus",
+"Transformation of shapes: translation, rotation, scaling","Mirroring, assembling and grouping",
+"Paper folding and cutting","Patterns in 2 and 3 dimensions"];
+const SKIM=["Algebraic structures: closure, associativity, identity, inverse","Subgroups and Lagrange's theorem",
+"Mean value theorems (Rolle's and Lagrange's)","Integration: definite integrals, substitution, by parts, properties",
+"AVL trees and rotations","Huffman coding","Job sequencing with deadlines",
+"Simplification and normal forms (CNF)","Parameter passing mechanisms",
+"DAG-based optimisation of basic blocks","Constant folding, strength reduction, dead code elimination",
+"Copy propagation","Constant propagation","Liveness analysis",
+"Common subexpression elimination (available expressions)","Records, blocks and blocking factor","Monitors",
+"Control memory size calculations","DNS hierarchy, iterative and recursive resolution, caching",
+"HTTP requests, methods and status codes","Persistent vs non-persistent HTTP and RTT calculations"];
+function prio(t){return CUT.indexOf(t)>-1?"cut":(SKIM.indexOf(t)>-1?"skim":"")}
+
+const LS_KEY="gatecs2027-tracker-v1";
+const BITS={S:1,R:2,P:4};
+const LABEL={S:"studied",R:"revised",P:"PYQs practised"};
+function slug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,70)}
+
+let state={marks:{},updatedAt:0};
+try{const raw=localStorage.getItem(LS_KEY);if(raw){const p=JSON.parse(raw);if(p&&p.marks)state=p}}catch(e){}
+function saveLocal(){try{localStorage.setItem(LS_KEY,JSON.stringify(state))}catch(e){}}
+
+const leaves=[]; // {id, sec, el, text, buttons}
+const secInfo={};
+const main=document.getElementById("main");
+const jump=document.getElementById("jump");
+
+SYL.forEach(sec=>{
+  const s=document.createElement("section");s.className="sec";s.id="sec-"+sec.id;
+  const head=document.createElement("div");head.className="sechead";
+  const h2=document.createElement("h2");h2.textContent=sec.name;
+  const meta=document.createElement("span");meta.className="meta";
+  head.append(h2,meta);s.append(head);
+  if(sec.official){
+    const d=document.createElement("details");d.className="official";
+    const sm=document.createElement("summary");sm.textContent="Official 2027 wording";
+    const p=document.createElement("p");p.textContent=sec.official;
+    d.append(sm,p);s.append(d);
+  }else if(sec.meta){
+    const p=document.createElement("p");p.className="official";p.textContent="Same syllabus for every GATE paper; unchanged for 2027.";s.append(p);
+  }
+  const cols=document.createElement("div");cols.className="cols";cols.setAttribute("aria-hidden","true");
+  cols.innerHTML="<span>S</span><span>R</span><span>P</span>";s.append(cols);
+  const secLeaves=[];
+  sec.groups.forEach(g=>{
+    const gd=document.createElement("div");gd.className="grp";
+    const h3=document.createElement("h3");
+    const tt=document.createElement("span");tt.textContent=g.t;h3.append(tt);
+    const n=document.createElement("span");n.className="n";h3.append(n);
+    if(g.tag){const tg=document.createElement("span");tg.className="tag";tg.textContent=g.tag;h3.append(tg)}
+    gd.append(h3);
+    const gl=[];
+    g.items.forEach(text=>{
+      const id=sec.id+"-"+slug(g.t).slice(0,24)+"-"+slug(text);
+      const row=document.createElement("div");row.className="row";
+      const t=document.createElement("div");t.className="t";t.textContent=text;
+      const p=prio(text);
+      if(p){
+        row.classList.add("low");
+        const pt=document.createElement("span");pt.className="ptag "+p;
+        pt.textContent=p==="cut"?"study last":"skim";
+        pt.title=p==="cut"?"Rarely asked; safe to leave till the end":"Read the concept, skip heavy practice";
+        t.append(pt);
+      }
+      const b=document.createElement("div");b.className="b";
+      const buttons={};
+      ["S","R","P"].forEach(k=>{
+        const btn=document.createElement("button");btn.className="bub";btn.type="button";btn.textContent=k;
+        btn.setAttribute("aria-label","Mark "+text+" as "+LABEL[k]);
+        btn.addEventListener("click",()=>toggle(id,k));
+        buttons[k]=btn;b.append(btn);
+      });
+      row.append(t,b);gd.append(row);
+      const leaf={id,sec:sec.id,row,text:(g.t+" "+text).toLowerCase(),buttons,grp:gd,prio:p};
+      leaves.push(leaf);gl.push(leaf);secLeaves.push(leaf);
+    });
+    gd._leaves=gl;gd._count=n;
+    s.append(gd);
+  });
+  if(sec.dropped){const dd=document.createElement("div");dd.className="dropped";dd.innerHTML="<b>Dropped in 2027, not tracked.</b> ";dd.append(document.createTextNode(sec.dropped));s.append(dd)}
+  main.append(s);
+  const a=document.createElement("a");a.href="#sec-"+sec.id;a.textContent=sec.name.replace("Computer Organization and Architecture","COA").replace("Programming and Data Structures","Programming & DS").replace("Engineering Mathematics","Maths");
+  const em=document.createElement("em");a.append(em);jump.append(a);
+  secInfo[sec.id]={el:s,meta,leaves:secLeaves,jumpCount:em,groups:[...s.querySelectorAll(".grp")]};
+});
+
+function val(id){return state.marks[id]||0}
+function paintLeaf(l){
+  const v=val(l.id);
+  ["S","R","P"].forEach(k=>{const on=!!(v&BITS[k]);l.buttons[k].classList.toggle("on",on);l.buttons[k].setAttribute("aria-pressed",on)});
+  l.row.classList.toggle("done",(v&7)===7);
+}
+function pct(a,b){return b?Math.round(a*100/b):0}
+function paintTotals(){
+  let tot=leaves.length,c={S:0,R:0,P:0};
+  leaves.forEach(l=>{const v=val(l.id);for(const k in BITS)if(v&BITS[k])c[k]++});
+  for(const k of ["S","R","P"]){
+    document.getElementById("t"+k).textContent=pct(c[k],tot)+"%";
+    document.getElementById("b"+k).style.width=pct(c[k],tot)+"%";
+  }
+  document.getElementById("cS").textContent=c.S+" of "+tot+" studied";
+  document.getElementById("cR").textContent=c.R+" of "+tot+" revised";
+  document.getElementById("cP").textContent=c.P+" of "+tot+" with PYQs done";
+  for(const id in secInfo){
+    const si=secInfo[id];let s=0,r=0,p=0;
+    si.leaves.forEach(l=>{const v=val(l.id);if(v&1)s++;if(v&2)r++;if(v&4)p++});
+    si.meta.textContent=s+"/"+si.leaves.length+" studied · "+r+" revised";
+    si.jumpCount.textContent=pct(s,si.leaves.length)+"%";
+    si.groups.forEach(g=>{const n=g._leaves.filter(l=>val(l.id)&1).length;g._count.textContent=n+"/"+g._leaves.length})
+  }
+}
+function paintAll(){leaves.forEach(paintLeaf);paintTotals();applyFilter()}
+
+let filter="all",coreOnly=false;
+const q=document.getElementById("q");
+const coreBtn=document.getElementById("core");
+coreBtn.addEventListener("click",()=>{
+  coreOnly=!coreOnly;coreBtn.setAttribute("aria-pressed",coreOnly);
+  coreBtn.style.background=coreOnly?"var(--ink)":"transparent";
+  coreBtn.style.color=coreOnly?"var(--paper)":"var(--ink)";
+  applyFilter();
+});
+function applyFilter(){
+  const term=q.value.trim().toLowerCase();let any=false;
+  leaves.forEach(l=>{
+    const v=val(l.id);let show=true;
+    if(filter==="todo")show=!(v&1);
+    else if(filter==="rev")show=!!(v&1)&&!(v&2);
+    else if(filter==="pyq")show=!(v&4);
+    if(show&&coreOnly)show=!l.prio;
+    if(show&&term)show=l.text.includes(term);
+    l.row.hidden=!show;if(show)any=true;
+  });
+  for(const id in secInfo){
+    const si=secInfo[id];let secAny=false;
+    si.groups.forEach(g=>{const vis=g._leaves.some(l=>!l.row.hidden);g.hidden=!vis;if(vis)secAny=true});
+    si.el.hidden=!secAny;
+  }
+  document.getElementById("empty").hidden=any;
+}
+q.addEventListener("input",applyFilter);
+document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>{
+  filter=b.dataset.f;document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",x===b));applyFilter();
+}));
+
+function toggle(id,k){
+  const v=val(id)^BITS[k];
+  if(v)state.marks[id]=v;else delete state.marks[id];
+  state.updatedAt=Date.now();
+  saveLocal();
+  const l=leaves.find(x=>x.id===id);paintLeaf(l);paintTotals();
+  scheduleRemote();
+}
+
+const resetBtn=document.getElementById("reset");let armed=null;
+resetBtn.addEventListener("click",()=>{
+  if(!armed){resetBtn.textContent="Tap again to clear everything";armed=setTimeout(()=>{armed=null;resetBtn.textContent="Reset all progress"},4000);return}
+  clearTimeout(armed);armed=null;resetBtn.textContent="Reset all progress";
+  state={marks:{},updatedAt:Date.now()};saveLocal();paintAll();scheduleRemote();
+});
+
+// ---------------------------------------------------------------
+// Supabase sync. Fill these two in, then deploy anywhere static.
+// Both values are safe to publish: Row Level Security is what
+// protects the data, not secrecy of the anon key.
+const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
+const SUPABASE_ANON_KEY = "YOUR-ANON-PUBLIC-KEY";
+// ---------------------------------------------------------------
+
+const statusEl=document.getElementById("status");
+const authBar=document.getElementById("auth");
+const emailIn=document.getElementById("email");
+const sendBtn=document.getElementById("send");
+const outBtn=document.getElementById("signout");
+let sb=null,uid=null,writing=false,again=false,timer=null;
+
+function scheduleRemote(){if(!sb||!uid)return;clearTimeout(timer);timer=setTimeout(flush,900)}
+
+async function flush(){
+  if(!sb||!uid)return;
+  if(writing){again=true;return}
+  writing=true;
+  try{
+    const {error}=await sb.from("progress").upsert({
+      user_id:uid,marks:state.marks,updated_at:new Date(state.updatedAt||Date.now()).toISOString()
+    },{onConflict:"user_id"});
+    if(error)throw error;
+    statusEl.textContent="Synced to your account.";
+  }catch(e){
+    statusEl.textContent="Saved on this device; sync failed ("+(e.message||"network")+"). Retrying.";
+    setTimeout(flush,4000);
+  }
+  writing=false;
+  if(again){again=false;flush()}
+}
+
+async function pull(){
+  try{
+    const {data,error}=await sb.from("progress").select("marks,updated_at").eq("user_id",uid).maybeSingle();
+    if(error)throw error;
+    if(data){
+      const remoteAt=new Date(data.updated_at).getTime()||0;
+      if(remoteAt>=(state.updatedAt||0)){
+        state={marks:Object.assign({},data.marks||{}),updatedAt:remoteAt};
+        saveLocal();paintAll();
+      }else{scheduleRemote()}
+    }else if(Object.keys(state.marks).length){scheduleRemote()}
+    statusEl.textContent="Synced to your account.";
+  }catch(e){statusEl.textContent="Saved on this device; could not read remote progress."}
+}
+
+function showSignedIn(email){
+  authBar.querySelector(".out").hidden=false;
+  authBar.querySelector(".in").hidden=true;
+  authBar.querySelector(".who").textContent=email||"";
+}
+function showSignedOut(){
+  authBar.querySelector(".out").hidden=true;
+  authBar.querySelector(".in").hidden=false;
+  statusEl.textContent="Saved on this device only. Sign in to sync across devices.";
+}
+
+sendBtn.addEventListener("click",async()=>{
+  const email=emailIn.value.trim();
+  if(!email||!sb)return;
+  sendBtn.disabled=true;sendBtn.textContent="Sending...";
+  try{
+    const {error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:window.location.href}});
+    if(error)throw error;
+    statusEl.textContent="Check "+email+" for the sign-in link.";
+  }catch(e){statusEl.textContent="Could not send the link: "+(e.message||"error")}
+  sendBtn.disabled=false;sendBtn.textContent="Email me a link";
+});
+
+outBtn.addEventListener("click",async()=>{
+  if(!sb)return;
+  await sb.auth.signOut();uid=null;showSignedOut();
+});
+
+(async()=>{
+  if(!window.supabase||SUPABASE_URL.indexOf("YOUR-PROJECT")>-1){
+    statusEl.textContent="Saved on this device. Add your Supabase keys to enable sync.";
+    authBar.hidden=true;return;
+  }
+  sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+  sb.auth.onAuthStateChange((_e,session)=>{
+    if(session&&session.user){uid=session.user.id;showSignedIn(session.user.email);pull()}
+    else{uid=null;showSignedOut()}
+  });
+  const {data}=await sb.auth.getSession();
+  if(data&&data.session){uid=data.session.user.id;showSignedIn(data.session.user.email);await pull()}
+  else showSignedOut();
+})();
+
+paintAll();
+</script>
+</body>
+</html>
